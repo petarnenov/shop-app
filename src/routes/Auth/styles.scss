@@ -1,0 +1,13 @@
+.auth-container {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 32px auto;
+  padding: 16px;
+
+  .sign-forms {
+    display: flex;
+    justify-content: space-between;
+  }
+}
