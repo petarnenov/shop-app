@@ -1,24 +1,21 @@
-import { useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
-import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import UserContext from "../../components/context/UserContext";
-import { signOutCurrentUser } from "../../utils/firebase/firebase";
+import { useContext } from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
+import CartIcon from '../../components/CartIcon/CartIcon';
+import CartDropdown from '../../components/CartDropdown/CartDropdown';
+import UserContext from '../../components/context/UserContext';
+import { signOutCurrentUser } from '../../utils/firebase/firebase';
 
-import "./styles.scss";
+import './styles.scss';
 
-const Navigation = ({ onMouseEnter, onMouseLeave }) => {
+const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-
-  const iconProps = {
-    onMouseEnter,
-    onMouseLeave,
-  };
 
   return (
     <>
       <div className="navigation">
         <Link className="logo-container" to="/">
-          <CrwnLogo {...iconProps} />
+          <CrwnLogo />
         </Link>
         <div className="nav-links-container">
           {currentUser && (
@@ -29,7 +26,7 @@ const Navigation = ({ onMouseEnter, onMouseLeave }) => {
               <Link
                 className="nav-link"
                 onClick={async () => {
-                  await signOutCurrentUser();                 
+                  await signOutCurrentUser();
                 }}
                 to="/"
               >
@@ -42,7 +39,9 @@ const Navigation = ({ onMouseEnter, onMouseLeave }) => {
               SIGN IN
             </Link>
           )}
+          <CartIcon />
         </div>
+        <CartDropdown />
       </div>
       <Outlet />
     </>
