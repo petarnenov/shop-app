@@ -6,9 +6,9 @@ import CartDropdowncontext from '../context/CartDropdownContext';
 import './styles.scss';
 
 const CartDropdown = () => {
-  const { show } = useContext(CartDropdowncontext);
+  const { isCartOpen } = useContext(CartDropdowncontext);
 
-  if (!show) return null;
+  if (!isCartOpen) return null;
 
   return (
     <div className="cart-dropdown-container">

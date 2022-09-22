@@ -1,16 +1,16 @@
 import { createContext, useState } from 'react';
 
 const initCartDropdownContext = {
-  show: false,
-  setShow: () => null,
+  isCartOpen: false,
+  setIsCartOpen: () => null,
 };
 
-const  CartDropdowncontext = createContext(initCartDropdownContext);
+const CartDropdowncontext = createContext(initCartDropdownContext);
 
 export const CartDropdownProvider = ({ children }) => {
-  const [show, setShow] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   return (
-    <CartDropdowncontext.Provider value={{ show, setShow }}>
+    <CartDropdowncontext.Provider value={{ isCartOpen, setIsCartOpen }}>
       {children}
     </CartDropdowncontext.Provider>
   );

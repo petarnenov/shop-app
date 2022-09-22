@@ -5,11 +5,11 @@ import CartDropdowncontext from '../context/CartDropdownContext';
 import './styles.scss';
 
 const CartIcon = () => {
-  const { setShow } = useContext(CartDropdowncontext);
+  const { setIsCartOpen } = useContext(CartDropdowncontext);
 
   const handleClick = (e) => {
     e.preventDefault();
-    setShow((prev) => !prev);
+    setIsCartOpen((prev) => !prev);
   };
 
   return (
