@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Button from '../Button/Button';
+import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
 import CartDropdownContext from '../context/CartDropdownContext';
 
 import './styles.scss';
@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button buttonTypeClass="invereted" onClick={handleClick}>
+      <Button buttonTypeClass={BUTTON_TYPE_CLASSES.invrted} onClick={handleClick}>
         Add to card
       </Button>
     </div>

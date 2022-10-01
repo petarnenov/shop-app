@@ -1,10 +1,10 @@
-import Categoryitem from "../CategoryItem/CategoryItem";
-import "./styles.scss";
+import CategoryItem from '../CategoryItem/CategoryItem';
+import './styles.scss';
 
 const Categories = ({ categories }) => (
   <div className="categories-container">
     {categories.map((category) => (
-      <Categoryitem key={category.id} category={category} />
+      <CategoryItem key={category.id} category={category} />
     ))}
   </div>
 );

@@ -1,21 +1,26 @@
-import "./styles.scss";
+import { Link } from 'react-router-dom';
+import './styles.scss';
 
-const Categoryitem = ({ category }) => {
+const CategoryItem = ({ category }) => {
   const { id, imageUrl, title } = category;
   return (
-    <div className="category-container" key={id}>
+    <Link
+      to={`shop/${title.toLowerCase()}`}
+      className="category-item-container"
+      key={id}
+    >
       <div
         className="background-image"
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
       />
-      <div className="category-body-container">
+      <div className="category-item-body-container">
         <h2>{title}</h2>
         <p>Shop Now</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
-export default Categoryitem;
+export default CategoryItem;
