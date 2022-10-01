@@ -40,5 +40,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-plugin-jest-dom": "^4.0.2",
+    "eslint-plugin-testing-library": "^5.7.0",
+    "jest-environment-jsdom": "^29.1.2"
   }
 }
