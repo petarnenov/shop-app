@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Navigation from './routes/Navigation/Navigation';
 import Home from './routes/Home/Home';
 import Auth from './routes/Auth/Auth';
 import Shop from './routes/Shop/Shop';
 import Checkout from './routes/Checkout/Checkout';
 
-import { useDispatch } from 'react-redux';
 import { setCurrentUser } from './store/user/userAction';
 import { setCategoriesArray } from './store/categories/categoriesActioin';
 
