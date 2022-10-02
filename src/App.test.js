@@ -42,8 +42,8 @@ describe('App.js', () => {
 
     expect(mockDispatch).toBeCalled();
     expect(mockDispatch).toBeCalledWith({
-      payload: null,
-      type: 'setCurrentUser',
+      payload: undefined,
+      type: 'user/checkUserSession',
     });
 
     //screen.debug(signInLink);
