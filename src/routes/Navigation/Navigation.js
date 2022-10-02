@@ -1,14 +1,16 @@
 import { Outlet, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 import CartIcon from '../../components/CartIcon/CartIcon';
 import CartDropdown from '../../components/CartDropdown/CartDropdown';
-import { signOutCurrentUser } from '../../utils/firebase/firebase';
 import { getUserStore } from '../../store/user/userSelector';
 import { useSelector } from 'react-redux';
 
 import './styles.scss';
+import { signOutStart } from '../../store/user/userAction';
 
 const Navigation = () => {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector(getUserStore);
 
   return (
@@ -25,9 +27,7 @@ const Navigation = () => {
               </Link>
               <Link
                 className="nav-link"
-                onClick={async () => {
-                  await signOutCurrentUser();
-                }}
+                onClick={() => dispatch(signOutStart())}
                 to="/"
               >
                 SIGN OUT

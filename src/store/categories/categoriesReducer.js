@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 export const categoriesReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case CATEGORIES_ACTION_TYPE.SET_CATEGORIES: {
+    case CATEGORIES_ACTION_TYPE.FETCH_CATEGORIES_SUCCESS: {
       return {
         ...state,
         categoriesArray: payload,

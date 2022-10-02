@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import {
-  createAuthUserWithEmailAndPass,
-} from "../../utils/firebase/firebase";
-import Button from "../Button/Button";
-import InputForm from "../InputForm/InputForm";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signUpStart } from '../../store/user/userAction';
+import Button from '../Button/Button';
+import InputForm from '../InputForm/InputForm';
 
-import "./styles.scss";
+import './styles.scss';
 
 const initFormFields = {
-  displayName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
 };
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(initFormFields);
   const [error, setError] = useState(false);
 
@@ -25,11 +25,11 @@ const SignUpForm = () => {
     // TODO: set request with state values
     try {
       if (password !== confirmPassword) {
-        throw Error("email or password incorect");
+        throw Error('email or password incorect');
       }
-      await createAuthUserWithEmailAndPass({ email, password });     
+      dispatch(signUpStart(email, password));
       setError(null);
-      setFormFields(initFormFields);     
+      setFormFields(initFormFields);
     } catch (err) {
       setError(err.message);
     }

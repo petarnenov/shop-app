@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
-  signInWithEmailAndPass,
-  signInWithGoogleRedirect,
-  signInWithGoooglePopup,
-} from '../../utils/firebase/firebase';
+  emailSignInStart,
+  googleSignInStart,
+  googleSignInWithRedirectStart,
+} from '../../store/user/userAction';
 import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
 import InputForm from '../InputForm/InputForm';
 
@@ -15,22 +16,16 @@ const initFormFields = {
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(initFormFields);
-  const [error, setError] = useState(false);
+  const [error] = useState(false);
 
   const { email, password } = formFields;
 
-  const handleSubmit = async (ev) => {
+  const handleSubmit = (ev) => {
     ev.preventDefault();
-    // TODO: set request with state values
-    try {
-      const { user } = await signInWithEmailAndPass({ email, password });
-      setError(null);
-      setFormFields(initFormFields);
-      console.log('user: ', user);
-    } catch (err) {
-      setError(err.message);
-    }
+    dispatch(emailSignInStart(email, password));
+    setFormFields(initFormFields);
   };
 
   const handleChange = (ev) => {
@@ -72,14 +67,14 @@ const SignInForm = () => {
         <Button type="submit">Sign In</Button>
         <div className="buttons-container">
           <Button
-            onClick={signInWithGoooglePopup}
+            onClick={() => dispatch(googleSignInStart())}
             buttonTypeClass={BUTTON_TYPE_CLASSES.google}
             type="button"
           >
             SignIn with Google Popup
           </Button>
           <Button
-            onClick={signInWithGoogleRedirect}
+            onClick={() => dispatch(googleSignInWithRedirectStart())}
             buttonTypeClass={BUTTON_TYPE_CLASSES.google}
             type="button"
           >

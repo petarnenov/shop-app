@@ -92,7 +92,7 @@ export const createUserAuthDoc = async (user) => {
     }
   }
 
-  return docRef;
+  return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPass = async ({ email, password }) => {
@@ -117,3 +117,15 @@ export const onAuthStateChangedListener = (cb) => {
   if (!cb) return;
   onAuthStateChanged(auth, cb);
 };
+
+export const getCurrentUser = () =>
+  new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });

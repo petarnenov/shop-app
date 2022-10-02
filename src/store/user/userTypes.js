@@ -1,0 +1,15 @@
+export const USER_ACTION_TYPES = {
+  SET_CURRENT_USER: 'user/setCurrentUser',
+  CHECK_USER_SESSION: 'user/checkUserSession',
+  GOOGLE_SIGN_IN_START: 'user/goggleSignInStart',
+  GOOGLE_SIGN_IN_REDIRECT_START: 'user/goggleSignInRedirectStart',
+  EMAIL_SIGN_IN_START: 'user/emailSignInStart',
+  SIGN_IM_SUCCESS: 'user/signInSuccess',
+  SIGN_IN_FAIL: 'user/signInFail',
+  SIGN_UP_START: 'user/signUpStart',
+  SIGN_UP_SUCCESS: 'user/signUpSuccess',
+  SIGN_UP_FAIL: 'user/signUpFail',
+  SIGN_OUT_START: 'user/signOutStart',
+  SIGN_OUT_SUCCESS: 'user/signOutSuccess',
+  SIGN_OUT_FAIL: 'user/signOutFail',
+};
