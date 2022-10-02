@@ -1,16 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
-import CartDropdownContext from '../context/CartDropdownContext';
+import { useDispatch } from 'react-redux';
 
 import './styles.scss';
+import { addItemToCart } from '../../store/cartDropdown/cartDropdownAction';
 
-const ProductCard = ({ product }) => {
-  const { addItemToCart } = useContext(CartDropdownContext);
+const ProductCard = ({ product }) => {  
+  const dispatch = useDispatch();
   const { name, imageUrl, price } = product;
 
   const handleClick = (e) => {
     e.preventDefault();
-    addItemToCart(product);
+    dispatch(addItemToCart(product));
   };
 
   return (
@@ -20,7 +21,10 @@ const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button buttonTypeClass={BUTTON_TYPE_CLASSES.invrted} onClick={handleClick}>
+      <Button
+        buttonTypeClass={BUTTON_TYPE_CLASSES.invrted}
+        onClick={handleClick}
+      >
         Add to card
       </Button>
     </div>

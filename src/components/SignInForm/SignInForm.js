@@ -1,25 +1,24 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   signInWithEmailAndPass,
   signInWithGoogleRedirect,
   signInWithGoooglePopup,
-} from "../../utils/firebase/firebase";
-import Button, { BUTTON_TYPE_CLASSES } from "../Button/Button";
-import InputForm from "../InputForm/InputForm";
+} from '../../utils/firebase/firebase';
+import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
+import InputForm from '../InputForm/InputForm';
 
-import "./styles.scss";
+import './styles.scss';
 
 const initFormFields = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const SignInForm = () => {
- 
   const [formFields, setFormFields] = useState(initFormFields);
   const [error, setError] = useState(false);
 
-  const { email, password } = formFields; 
+  const { email, password } = formFields;
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
@@ -27,8 +26,8 @@ const SignInForm = () => {
     try {
       const { user } = await signInWithEmailAndPass({ email, password });
       setError(null);
-      setFormFields(initFormFields);    
-      console.log("user: ", user);
+      setFormFields(initFormFields);
+      console.log('user: ', user);
     } catch (err) {
       setError(err.message);
     }

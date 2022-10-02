@@ -34,6 +34,3 @@ export const removeCartItem = (items, itemToRemove) => {
 
 export const removeProduct = (items, itemToRemove) =>
   updateCartItems(items.filter((item) => item.id !== itemToRemove.id));
-
-// TODO: Move to proper place
-export const createAction = (type, payload) => ({ type, payload });
