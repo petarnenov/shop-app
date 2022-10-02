@@ -1,11 +1,11 @@
-import { render, screen } from './utils/test/test-utils';
+import { render, screen, store } from './utils/test/test-utils';
 
 import App from './App';
 
 describe('App.js', () => {
-  test('should render [Logo] icon', () => {
+  test('should render [Logo] icon', async () => {
     render(<App />);
-    const logoLink = screen.getByRole('link', {
+    const logoLink = await screen.findByRole('link', {
       name: 'crown.svg',
     });
 
@@ -15,15 +15,36 @@ describe('App.js', () => {
 
     //screen.debug(logoLink);
   });
-  test('should render [SIGN IN] text', () => {
+  test('should render [SIGN IN] text', async () => {
     render(<App />);
-    const signInLink = screen.getByRole('link', {
+    const signInLink = await screen.findByRole('link', {
       name: /SIGN IN/i,
     });
 
     expect(signInLink).toBeInTheDocument();
     expect(signInLink).toHaveAttribute('href', '/auth');
     expect(signInLink).toHaveClass('nav-link');
+
+    //screen.debug(signInLink);
+  });
+
+  test('should call [dispatch]', async () => {
+    const mockDispatch = jest.fn();
+    jest.spyOn(store, 'dispatch').mockImplementation(mockDispatch);
+    render(<App />);
+    const signInLink = await screen.findByRole('link', {
+      name: /SIGN IN/i,
+    });
+
+    expect(signInLink).toBeInTheDocument();
+    expect(signInLink).toHaveAttribute('href', '/auth');
+    expect(signInLink).toHaveClass('nav-link');
+
+    expect(mockDispatch).toBeCalled();
+    expect(mockDispatch).toBeCalledWith({
+      payload: null,
+      type: 'setCurrentUser',
+    });
 
     //screen.debug(signInLink);
   });

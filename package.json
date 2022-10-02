@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "firebase": "^9.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,7 +24,8 @@
     "test": "react-scripts test",
     "test:ci": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "ci": "npm run test:ci && npm run build"
+    "ci": "npm run test:ci && npm run build",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +52,7 @@
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^5.7.0",
+    "husky": "^8.0.1",
     "jest-environment-jsdom": "^29.1.2"
   }
 }
