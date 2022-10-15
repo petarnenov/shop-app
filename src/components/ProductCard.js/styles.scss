@@ -28,10 +28,11 @@
         }
 
         button {
+            cursor: pointer;
             opacity: 0.85;
             display: inline-block;
 
-            &:active {               
+            &:active {
                 opacity: 0.3;
                 scale: 0.99;
             }

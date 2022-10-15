@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
+import PaymentForm from '../../components/PaymentForm/PaymentForm';
 import {
   getCartItems,
   getTotal,
@@ -26,6 +27,7 @@ const Checkout = () => {
         <CheckoutItem item={item} key={item.name} />
       ))}
       <div className="total">Total: ${total}</div>
+      <PaymentForm />
     </div>
   );
 };

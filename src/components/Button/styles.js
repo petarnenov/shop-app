@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BaseButton = styled.button`
-.button - container {  
+.button - container {
   min-width: 165px;
   width: auto;
   height: 50px;
@@ -18,6 +18,7 @@ export const BaseButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: white;
@@ -46,4 +47,34 @@ export const InvertedButton = styled(BaseButton)`
     color: white;
     border: none;
   }
+`;
+
+export const SpinnerContainer = styled.div`
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  :after {
+    content: ' ';
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin: 2px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    border-color: #676262 transparent #676262 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+export const ButtonSpinner = styled(SpinnerContainer)`
+  width: 18px;
+  height: 18px;
 `;

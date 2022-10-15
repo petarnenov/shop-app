@@ -88,7 +88,7 @@ export const createUserAuthDoc = async (user) => {
         createdAt,
       });
     } catch (err) {
-      console.log('error: ', err.message);
+      console.error('error: ', err.message);
     }
   }
 
